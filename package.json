@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -20,11 +21,11 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
     "prepare": "husky install"
   },
-  "lint-staged":{
-    "*.{js,jsx}":[
+  "lint-staged": {
+    "*.{js,jsx}": [
       "eslint --quiet --cache --fix"
     ],
-    "*.{js,json,jsx,html}":[
+    "*.{js,json,jsx,html}": [
       "prettier --write"
     ]
   },
@@ -60,7 +61,7 @@
     "prettier": "^2.7.1"
   },
   "engines": {
-    "node": "^16.17.0",
-    "npm": "^8.17.0"
+    "node": ">=16.17.0",
+    "npm": ">=8.17.0"
   }
 }
