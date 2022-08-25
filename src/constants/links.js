@@ -3,7 +3,7 @@ const publicLinks = {
   Login: '/login'
 };
 const urls = {
-  LOGIN: 'user/login/'
+  LOGIN: '/user/login/'
 };
 
 export { publicLinks, urls };

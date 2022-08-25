@@ -3,8 +3,7 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { LoginSchema } from '../validation/Login';
-import axios from '../api/Axios';
+import axios from '../api/axios';
 import { urls, publicLinks } from '../constants/links';
 
 function Login() {
@@ -16,14 +15,13 @@ function Login() {
           email: '',
           password: ''
         }}
-        validationSchema={LoginSchema}
         onSubmit={async (values) => {
           try {
             await axios.post(urls.LOGIN, values);
-            toast.success('Successfully login');
+            toast.success('successfully logged in');
             navigate(publicLinks.home, { replace: true });
           } catch (error) {
-            toast.error('Login failed');
+            toast.error('login failed');
           }
         }}
       >
@@ -56,12 +54,12 @@ function Login() {
               type="submit"
               className="rounded shadow bg-blue-700 p-1 text-white hover:opacity-90 w-full"
             >
-              SignIn
+              Submit
             </button>
             <p className="text-white">
-              <span className="text-xs">Dont have an account?</span>{' '}
+              <span className="text-xs">Already have an account?</span>{' '}
               <Link className="text-blue-700 italic underline" to="/">
-                SignUp
+                Sign in
               </Link>
             </p>
           </Form>
