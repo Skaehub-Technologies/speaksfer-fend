@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import publicLinks from '../constants/links';
+import { publicLinks } from '../constants/links';
 
 function Navbar() {
   return (

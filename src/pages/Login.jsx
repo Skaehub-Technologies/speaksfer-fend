@@ -1,87 +1,72 @@
-/* eslint-disable no-console */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable react/button-has-type */
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useRef, useState, useEffect } from 'react';
-import { useCookies } from 'react-cookie';
-import { API } from '../api/ApiService';
+/* eslint-disable prettier/prettier */
+import React from 'react';
+import { Formik, Form, Field } from 'formik';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { LoginSchema } from '../validation/Login';
+import axios from '../api/Axios';
+import { urls, publicLinks } from '../constants/links';
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoginView, setIsLoginView] = useState(true);
-  const emailRef = useRef();
-
-  const [token, setToken] = useCookies(['app-token']);
-
-  useEffect(() => {
-    emailRef.current.focus();
-  }, []);
-
-  useEffect(() => {
-    if (token['app-token']) window.location.href = '/';
-  }, [token]);
-
-  const loginClicked = () => {
-    API.loginUser({ email, password })
-      .then((resp) => setToken('app-token', resp.token))
-      .catch((error) => console.log(error));
-    setEmail('');
-    setPassword('');
-  };
-  const registerClicked = () => {
-    API.registerUser({ email, password })
-      .then(() => loginClicked())
-      .catch((error) => console.log(error));
-  };
-  const isDisabled = email.length === 0 || password.length === 0;
-
+  const navigate = useNavigate();
   return (
-    <div className="App">
-      <header className="App-header">{isLoginView ? <h1>Login</h1> : <h1>Register</h1>}</header>
-      <div className="login-container">
-        <label htmlFor="email">Email</label>
-        <br />
-        <input
-          id="email"
-          type="email"
-          placeholder="Email Address"
-          autoComplete="off"
-          ref={emailRef}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <br />
-        <label htmlFor="password">Password</label>
-        <br />
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <br />
-        {isLoginView ? (
-          <button onClick={loginClicked} disabled={isDisabled}>
-            Login
-          </button>
-        ) : (
-          <button onClick={registerClicked} disabled={isDisabled}>
-            Register
-          </button>
+    <div className="w-full flex justify-center p-10 bg-light-dark h-screen">
+      <Formik
+        initialValues={{
+          email: '',
+          password: ''
+        }}
+        validationSchema={LoginSchema}
+        onSubmit={async (values) => {
+          try {
+            await axios.post(urls.LOGIN, values);
+            toast.success('Successfully login');
+            navigate(publicLinks.home, { replace: true });
+          } catch (error) {
+            toast.error('Login failed');
+          }
+        }}
+      >
+        {({ errors, touched }) => (
+          <Form className="bg-dark rounded p-2 shadow px-4">
+            <h1 className="text-white text-xl">Login</h1>
+            <div className="text-white flex flex-col mb-2">
+              <label htmlFor="email" className="text-sm">
+                Email
+              </label>
+              <Field name="email" className="rounded bg-light-grey outline-none px-2" />
+              {touched.email && errors.email && (
+                <div className="my-1 text-xs text-red-700 italic">{errors.email}</div>
+              )}
+            </div>
+            <div className="text-white flex flex-col mb-2">
+              <label htmlFor="password" className="text-sm">
+                Password
+              </label>
+              <Field
+                type="password"
+                name="password"
+                className="rounded bg-light-grey outline-none px-2"
+              />
+              {touched.password && errors.password && (
+                <div className="my-1 text-xs text-red-700 italic">{errors.password}</div>
+              )}
+            </div>
+            <button
+              type="submit"
+              className="rounded shadow bg-blue-700 p-1 text-white hover:opacity-90 w-full"
+            >
+              SignIn
+            </button>
+            <p className="text-white">
+              <span className="text-xs">Dont have an account?</span>{' '}
+              <Link className="text-blue-700 italic underline" to="/">
+                SignUp
+              </Link>
+            </p>
+          </Form>
         )}
-
-        {isLoginView ? (
-          <p onClick={() => setIsLoginView(false)}>You don't have an account? Register here!</p>
-        ) : (
-          <p onClick={() => setIsLoginView(true)}>You already have an account? Login here</p>
-        )}
-      </div>
+      </Formik>
     </div>
   );
 }
