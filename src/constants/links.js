@@ -1,6 +1,11 @@
 const publicLinks = {
   home: '/',
-  Login: '/login'
+  Login: '/login',
+  Registration: '/registration'
 };
 
-export default publicLinks;
+const urls = {
+  REGISTER: 'user/register/'
+};
+
+export { publicLinks, urls };
