@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { publicLinks } from '../constants/links';
+import { privateLinks } from '../constants/PrivateLinks';
 
 function Navbar() {
   return (
@@ -11,6 +12,15 @@ function Navbar() {
         </li>
         <li>
           <NavLink to={publicLinks.Login}>Login</NavLink>
+        </li>
+        <li>
+          <NavLink to={publicLinks.Unauthorized}>Unauthorized</NavLink>
+        </li>
+        <li>
+          <NavLink to={privateLinks.Admin}>Admin</NavLink>
+        </li>
+        <li>
+          <NavLink to={privateLinks.Editor}>Editor</NavLink>
         </li>
       </ul>
     </div>

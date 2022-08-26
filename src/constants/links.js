@@ -1,6 +1,7 @@
 const publicLinks = {
   home: '/',
-  Login: '/login'
+  Login: '/login',
+  Unauthorized: '/unauthorized'
 };
 const urls = {
   LOGIN: '/user/login/'
