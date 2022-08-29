@@ -14,9 +14,9 @@ jobs:
       - node/install:
           node-version: "18.8.0"
       - node/install-packages
-      # Setup tests and activate this comman
-      # - run:
-      #     command: npm run test
+      Setup tests and activate this command
+      - run:
+          command: npm run test
       - run:
           name: "Speaksfer Blog App"
           command: "echo This is the UI of the Speaksfer Blog Application"
