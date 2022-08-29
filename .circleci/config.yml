@@ -14,7 +14,7 @@ jobs:
       - node/install:
           node-version: "18.8.0"
       - node/install-packages
-      Setup tests and activate this command
+      - Setup tests and activate this comman
       - run:
           command: npm run test
       - run:
