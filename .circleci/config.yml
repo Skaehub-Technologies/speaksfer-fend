@@ -14,8 +14,12 @@ jobs:
       - node/install:
           node-version: "12.22"
       - node/install-packages
+      # Setup tests and activate this comman
+      # - run:
+      #     command: npm run test
       - run:
-          command: npm run test
+          name: "Say hello"
+          command: "echo Hello, World!"
 workflows:
   build-and-test:
     jobs:
