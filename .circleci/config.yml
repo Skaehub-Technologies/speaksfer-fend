@@ -3,7 +3,7 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@5.0.2
+  node: circleci/node@18.0.0
 
 jobs:
   build-and-test:
@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - node/install:
-          node-version: "12.22"
+          node-version: "18.8.0"
       - node/install-packages
       # Setup tests and activate this comman
       # - run:
