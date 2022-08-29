@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import publicLinks from '../constants/links';
+import { publicLinks } from '../constants/links';
 
 function Navbar() {
   return (
@@ -11,6 +11,9 @@ function Navbar() {
         </li>
         <li>
           <NavLink to={publicLinks.Login}>Login</NavLink>
+        </li>
+        <li>
+          <NavLink to={publicLinks.Registration}>Sign up</NavLink>
         </li>
       </ul>
     </div>
