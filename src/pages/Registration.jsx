@@ -22,10 +22,10 @@ function Registration() {
         onSubmit={async (values) => {
           try {
             await axios.post(urls.REGISTER, values);
-            toast.success('successfully registered');
+            toast.success('Successfully registered');
             navigate(publicLinks.Login, { replace: true });
           } catch (error) {
-            toast.error('registration failed');
+            toast.error('Registration failed');
           }
         }}
       >
