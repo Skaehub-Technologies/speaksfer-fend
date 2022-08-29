@@ -3,7 +3,7 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@18.0.0
+  node: circleci/node@5.0.2
 
 jobs:
   build-and-test:
@@ -18,8 +18,8 @@ jobs:
       # - run:
       #     command: npm run test
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          name: "Speaksfer Blog App"
+          command: "echo This is the UI of the Speaksfer Blog Application"
 workflows:
   build-and-test:
     jobs:
