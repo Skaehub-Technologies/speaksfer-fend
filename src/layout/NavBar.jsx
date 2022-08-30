@@ -21,6 +21,7 @@ function Navbar() {
         </li>
         <li>
           <NavLink to={privateLinks.Editor}>Editor</NavLink>
+          <NavLink to={publicLinks.Registration}>Sign up</NavLink>
         </li>
       </ul>
     </div>

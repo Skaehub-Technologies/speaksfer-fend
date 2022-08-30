@@ -13,6 +13,8 @@ root.render(
       <App />
       <ToastContainer />
     </AuthProvider>
+    <ToastContainer />
+    <App />
   </React.StrictMode>
 );
 
