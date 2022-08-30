@@ -10,12 +10,6 @@ const Admin = React.lazy(() => import('../pages/Admin'));
 const Editor = React.lazy(() => import('../pages/Editor'));
 const Unauthorized = React.lazy(() => import('../pages/Unauthorized'));
 
-const ROLES = {
-  User: 2021,
-  Editor: 2022,
-  Admin: 2023
-};
-
 function BaseRouter() {
   return (
     <Router>
@@ -24,10 +18,10 @@ function BaseRouter() {
           <Route exact path={publicLinks.home} element={<Home />} />
           <Route path={publicLinks.Login} element={<Login />} />
           <Route path={publicLinks.Unauthorized} element={<Unauthorized />} />
-          <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+          <Route element={<RequireAuth />}>
             <Route path={privateLinks.Admin} element={<Admin />} />
           </Route>
-          <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
+          <Route element={<RequireAuth />}>
             <Route path={privateLinks.Editor} element={<Editor />} />
           </Route>
         </Routes>
