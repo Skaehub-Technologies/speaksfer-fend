@@ -9,7 +9,7 @@ import { urls, publicLinks } from '../constants/links';
 function Login() {
   const navigate = useNavigate();
   return (
-    <div className="w-full flex justify-center p-10 bg-light-dark h-screen">
+    <div className="w-full flex justify-center p-10 bg-gray-300 h-screen">
       <Formik
         initialValues={{
           email: '',
@@ -21,14 +21,14 @@ function Login() {
             toast.success('successfully logged in');
             navigate(publicLinks.home, { replace: true });
           } catch (error) {
-            toast.error('login failed');
+            toast.error('Incorrect email or password');
           }
         }}
       >
         {({ errors, touched }) => (
-          <Form className="bg-dark rounded p-2 shadow px-4">
-            <h1 className="text-white text-xl">Login</h1>
-            <div className="text-white flex flex-col mb-2">
+          <Form className="bg-dark rounded p-2 shadow px-4 m-auto">
+            <h1 className="text-white text-xl text-center p-3">Login</h1>
+            <div className="text-white flex flex-col mb-2 pb-2">
               <label htmlFor="email" className="text-sm">
                 Email
               </label>
@@ -56,10 +56,10 @@ function Login() {
             >
               Submit
             </button>
-            <p className="text-white">
-              <span className="text-xs">Already have an account?</span>{' '}
-              <Link className="text-blue-700 italic underline" to="/">
-                Sign in
+            <p className="text-white pt-1 pb-3">
+              <span className="text-xs text-white mb-3 pb-2">Dont have an account?</span>{' '}
+              <Link className="text-blue-700 italic underline " to="/">
+                Sign up
               </Link>
             </p>
           </Form>
