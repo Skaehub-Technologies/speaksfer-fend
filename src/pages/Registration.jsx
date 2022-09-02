@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { RegistrationSchema } from '../validation/Registration';
 import axios from '../api/axios';
 import { urls, publicLinks } from '../constants/links';
+import logo from '../images/logo.svg';
 
 function Registration() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ function Registration() {
       >
         {({ errors, touched }) => (
           <Form className="bg-dark rounded p-2 shadow px-4 m-auto">
+            <img src={logo} alt="speaksfer" className="m-auto h-6 sm:h-9" />
             <h1 className="text-white text-xl text-center p-3">Register</h1>
             <div className="text-white flex flex-col mb-2 pb-2">
               <label htmlFor="username" className="text-sm">

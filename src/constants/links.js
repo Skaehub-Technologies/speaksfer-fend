@@ -6,7 +6,8 @@ const publicLinks = {
 };
 const urls = {
   REGISTER: 'user/register/',
-  LOGIN: '/user/login/'
+  LOGIN: '/user/login/',
+  ARTICLES: '/articles/articles/'
 };
 
 export { publicLinks, urls };
