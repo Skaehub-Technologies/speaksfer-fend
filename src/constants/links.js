@@ -10,7 +10,8 @@ const urls = {
   REGISTER: 'user/register/',
   LOGIN: '/user/login/',
   RESET: '/user/password-reset/',
-  GET_PROFILE: '/user/login/'
+  GET_PROFILE: '/user/login/',
+  ARTICLES: '/articles/articles/'
 };
 
 const privateLinks = {
