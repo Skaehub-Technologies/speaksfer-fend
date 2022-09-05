@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-// import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { privateLinks } from '../constants/links';
 import useAuth from '../hooks/useAuth';
-// import axios from '../api/axios';
-// import useRefreshToken from '../hooks/useRefreshToken';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 
 function Profile() {
   const axiosPrivate = useAxiosPrivate();
-  // const navigate = useNavigate();
-  //   const refresh = useRefreshToken();
-  // const location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [profile, setProfile] = useState({
     username: 'John Doe',
     bio: 'Maybe update your bio!',
@@ -22,7 +18,6 @@ function Profile() {
   });
 
   const controller = new AbortController();
-  // eslint-disable-next-line camelcase
   const { auth } = useAuth();
   const fetchProfile = async () => {
     try {
@@ -30,7 +25,7 @@ function Profile() {
       setProfile(response.data);
     } catch (error) {
       toast.error('profile fetch failed');
-      // navigate('/', { state: { from: location }, replace: true });
+      navigate('/', { state: { from: location }, replace: true });
     }
   };
   useEffect(() => {
