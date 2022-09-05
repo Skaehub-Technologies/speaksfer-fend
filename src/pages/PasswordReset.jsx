@@ -6,22 +6,23 @@ import { toast } from 'react-toastify';
 import axios from '../api/axios';
 import { urls, publicLinks } from '../constants/links';
 
-function Login() {
+function PasswordReset() {
   const navigate = useNavigate();
   return (
     <div className="w-full flex justify-center p-10 bg-gray-300 h-screen">
       <Formik
         initialValues={{
-          email: '',
-          password: ''
+          email: ''
         }}
         onSubmit={async (values) => {
           try {
-            await axios.post(urls.LOGIN, values);
-            toast.success('successfully logged in');
-            navigate(publicLinks.home, { replace: true });
+            await axios.post(urls.RESET, values);
+            toast.success('Check email for reset link');
+            setTimeout(() => {
+              navigate(publicLinks.Login, { replace: true });
+            }, 3000);
           } catch (error) {
-            toast.error('Incorrect email or password');
+            toast.error('Email does not exist');
           }
         }}
       >
@@ -37,19 +38,6 @@ function Login() {
                 <div className="my-1 text-xs text-red-700 italic">{errors.email}</div>
               )}
             </div>
-            <div className="text-white flex flex-col mb-2">
-              <label htmlFor="password" className="text-sm">
-                Password
-              </label>
-              <Field
-                type="password"
-                name="password"
-                className="rounded bg-light-grey outline-none px-2"
-              />
-              {touched.password && errors.password && (
-                <div className="my-1 text-xs text-red-700 italic">{errors.password}</div>
-              )}
-            </div>
             <button
               type="submit"
               className="rounded shadow bg-blue-700 p-1 text-white hover:opacity-90 w-full"
@@ -57,14 +45,9 @@ function Login() {
               Submit
             </button>
             <p className="text-white pt-1 pb-3">
-              <span className="text-xs text-white mb-3 pb-2">Dont have an account?</span>{' '}
-              <Link className="text-blue-700 italic underline " to="/registration">
+              <span className="text-xs text-white mb-3 pb-2">Already have an account?</span>{' '}
+              <Link className="text-blue-700 italic underline " to="/login">
                 Sign up
-              </Link>
-            </p>
-            <p className="text-white pt-1 pb-3">
-              <Link className="text-blue-700 italic underline " to="/forgot-password">
-                Reset Password
               </Link>
             </p>
           </Form>
@@ -74,4 +57,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default PasswordReset;

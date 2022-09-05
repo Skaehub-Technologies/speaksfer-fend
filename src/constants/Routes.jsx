@@ -10,6 +10,7 @@ const Admin = React.lazy(() => import('../pages/Admin'));
 const Editor = React.lazy(() => import('../pages/Editor'));
 const Unauthorized = React.lazy(() => import('../pages/Unauthorized'));
 const Registration = React.lazy(() => import('../pages/Registration'));
+const PasswordReset = React.lazy(() => import('../pages/PasswordReset'));
 
 function BaseRouter() {
   return (
@@ -19,6 +20,7 @@ function BaseRouter() {
           <Route exact path={publicLinks.home} element={<Home />} />
           <Route path={publicLinks.Login} element={<Login />} />
           <Route path={publicLinks.Registration} element={<Registration />} />
+          <Route path={publicLinks.PasswordReset} element={<PasswordReset />} />
           <Route path={publicLinks.Unauthorized} element={<Unauthorized />} />
           <Route element={<RequireAuth />}>
             <Route path={privateLinks.Admin} element={<Admin />} />
