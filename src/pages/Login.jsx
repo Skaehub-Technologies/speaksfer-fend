@@ -1,13 +1,19 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from '../api/axios';
-import { urls, publicLinks } from '../constants/links';
+import { urls } from '../constants/links';
+import useAuth from '../hooks/useAuth';
+import jwtDecode from '../utils/jwt_decode';
+import LocalStorageService from '../utils/local_storage';
 
 function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { setAuth } = useAuth();
+  const from = location.state?.from?.pathname || '/';
   return (
     <div className="w-full flex justify-center p-10 bg-gray-300 h-screen">
       <Formik
@@ -17,9 +23,11 @@ function Login() {
         }}
         onSubmit={async (values) => {
           try {
-            await axios.post(urls.LOGIN, values);
+            const response = await axios.post(urls.LOGIN, values);
+            LocalStorageService.setToken(response.data);
+            setAuth({ access: response.data.access, user_id: jwtDecode(response.data.access) });
             toast.success('successfully logged in');
-            navigate(publicLinks.home, { replace: true });
+            navigate(from, { replace: true });
           } catch (error) {
             toast.error('Incorrect email or password');
           }

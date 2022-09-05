@@ -3,11 +3,7 @@ import BaseRouter from './constants/Routes';
 import './assets/styles/main.scss';
 
 function App() {
-  return (
-    <div className="App">
-      <BaseRouter />
-    </div>
-  );
+  return <BaseRouter />;
 }
 
 export default App;
