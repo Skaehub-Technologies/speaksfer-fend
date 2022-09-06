@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import jwtDecode from 'jwt-decode';
 import { createContext, useEffect, useState } from 'react';
 import LocalStorageService from '../utils/local_storage';
+import jwtDecode from '../utils/jwt_decode';
 
 const AuthContext = createContext({});
 
@@ -12,7 +12,7 @@ export function AuthProvider({ children }) {
     setAuth((prev) => {
       return {
         ...prev,
-        user_id: jwtDecode(LocalStorageService.getAccessToken()).user_id,
+        user_id: jwtDecode(LocalStorageService.getAccessToken()),
         access: LocalStorageService.getAccessToken()
       };
     });

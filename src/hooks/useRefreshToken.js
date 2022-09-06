@@ -13,7 +13,7 @@ const useRefreshToken = () => {
     setAuth((prev) => {
       return {
         ...prev,
-        user_id: jwtDecode(response.data.access).user_id,
+        user_id: jwtDecode(response.data.access),
         access: response.data.access
       };
     });
