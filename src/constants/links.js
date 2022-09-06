@@ -3,19 +3,20 @@ const publicLinks = {
   LOGIN: '/login',
   UNAUTHORIZED: '/unauthorized',
   REGISTRATION: '/registration',
-  PROFILE: '/profile'
+  PROFILE: '/profile',
+  PASSWORDRESET: '/forgot-password'
+};
+const urls = {
+  REGISTER: 'user/register/',
+  LOGIN: '/user/login/',
+  RESET: '/user/password-reset/',
+  GET_PROFILE: '/user/login/'
 };
 
 const privateLinks = {
   ADMIN: '/admin',
   EDITOR: '/editor',
   EDITPROFILE: '/profile/edit'
-};
-
-const urls = {
-  REGISTER: 'user/register/',
-  LOGIN: '/user/login/',
-  GET_PROFILE: '/user/login/'
 };
 
 export { publicLinks, privateLinks, urls };

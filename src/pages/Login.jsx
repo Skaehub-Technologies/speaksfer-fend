@@ -66,8 +66,13 @@ function Login() {
             </button>
             <p className="text-white pt-1 pb-3">
               <span className="text-xs text-white mb-3 pb-2">Dont have an account?</span>{' '}
-              <Link className="text-blue-700 italic underline " to="/">
+              <Link className="text-blue-700 italic underline " to="/registration">
                 Sign up
+              </Link>
+            </p>
+            <p className="text-white pt-1 pb-3">
+              <Link className="text-blue-700 italic underline " to="/forgot-password">
+                Reset Password
               </Link>
             </p>
           </Form>
