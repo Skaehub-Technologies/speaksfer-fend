@@ -3,7 +3,7 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { RegistrationSchema } from '../validation/Registration';
+import { RegistrationSchema } from '../validation/validations';
 import axios from '../api/axios';
 import { urls, publicLinks } from '../constants/links';
 
@@ -23,7 +23,7 @@ function Registration() {
           try {
             await axios.post(urls.REGISTER, values);
             toast.success('Successfully registered');
-            navigate(publicLinks.Login, { replace: true });
+            navigate(publicLinks.LOGIN, { replace: true });
           } catch (error) {
             toast.error('Registration failed');
           }

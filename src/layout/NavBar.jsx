@@ -1,30 +1,34 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { publicLinks } from '../constants/links';
-import { privateLinks } from '../constants/PrivateLinks';
+import { Link } from 'react-router-dom';
+import { publicLinks, privateLinks } from '../constants/links';
 
 function Navbar() {
   return (
-    <div className="navbar">
-      <ul>
-        <li>
-          <NavLink to={publicLinks.home}>Home</NavLink>
+    <nav className=" py-3 px-1 sticky top-0 border border-b-indigo-200 bg-gray-200 ">
+      <ul className="flex justify-end font-semibold ">
+        <li className="py-1 px-2 hover:text-indigo-700">
+          <Link to={publicLinks.HOME}>Home</Link>
         </li>
-        <li>
-          <NavLink to={publicLinks.Login}>Login</NavLink>
+        <li className="py-1 px-2 hover:text-indigo-700">
+          <Link to={publicLinks.LOGIN}>Login</Link>
         </li>
-        <li>
-          <NavLink to={publicLinks.Unauthorized}>Unauthorized</NavLink>
+        <li className="py-1 px-2 hover:text-indigo-700">
+          <Link to={publicLinks.UNAUTHORIZED}>Unauthorized</Link>
         </li>
-        <li>
-          <NavLink to={privateLinks.Admin}>Admin</NavLink>
+        <li className="py-1 px-2 hover:text-indigo-700">
+          <Link to={publicLinks.PROFILE}>Profile</Link>
         </li>
-        <li>
-          <NavLink to={privateLinks.Editor}>Editor</NavLink>
-          <NavLink to={publicLinks.Registration}>Sign up</NavLink>
+        <li className="py-1 px-2 hover:text-indigo-700">
+          <Link to={privateLinks.ADMIN}>Admin</Link>
+        </li>
+        <li className="py-1 px-2 hover:text-indigo-700">
+          <Link to={privateLinks.EDITOR}>Editor</Link>
+        </li>
+        <li className="py-1 px-2 hover:text-indigo-700">
+          <Link to={publicLinks.REGISTRATION}>SignUp</Link>
         </li>
       </ul>
-    </div>
+    </nav>
   );
 }
 
