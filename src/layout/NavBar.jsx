@@ -1,10 +1,16 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { useState } from 'react';
+import { AiOutlineMenu } from 'react-icons/ai';
 import { NavLink } from 'react-router-dom';
 import { publicLinks } from '../constants/links';
 import logo from '../images/logo.svg';
+import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
 
 function Navbar() {
+  // eslint-disable-next-line no-unused-vars
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div>
       <nav className="bg-gray-800 shadow">
@@ -19,28 +25,23 @@ function Navbar() {
             aria-controls="navbar-default"
             aria-expanded="false"
           >
-            <span className="sr-only">Open main menu</span>
+            <AiOutlineMenu size={25} className="text-white" />
           </button>
           <div className="hidden md:block" id="navbar-default">
             <div className="ml-10 flex items-baseline space-x-4">
               <NavLink
-                to={publicLinks.home}
+                to={publicLinks.HOME}
                 className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
               >
                 Home
               </NavLink>
               <NavLink
-                to={publicLinks.home}
+                to={publicLinks.HOME}
                 className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
               >
                 Write
               </NavLink>
-              <NavLink
-                to={publicLinks.Login}
-                className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Login
-              </NavLink>
+              {isLoggedIn ? <LogoutButton /> : <LoginButton />}
             </div>
           </div>
         </div>

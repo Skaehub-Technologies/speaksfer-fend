@@ -8,6 +8,7 @@ import { urls } from '../constants/links';
 import useAuth from '../hooks/useAuth';
 import jwtDecode from '../utils/jwt_decode';
 import LocalStorageService from '../utils/local_storage';
+import logo from '../images/logo.svg';
 
 function Login() {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ function Login() {
       >
         {({ errors, touched }) => (
           <Form className="bg-dark rounded p-2 shadow px-4 m-auto">
+            <img src={logo} alt="speaksfer" className="m-auto h-6 sm:h-9" />
             <h1 className="text-white text-xl text-center p-3">Login</h1>
             <div className="text-white flex flex-col mb-2 pb-2">
               <label htmlFor="email" className="text-sm">

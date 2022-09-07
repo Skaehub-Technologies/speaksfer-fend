@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from '../api/axios';
 import { urls } from '../constants/links';
-import Navbar from '../layout/NavBar';
 
 function Home() {
   const [results, setResults] = useState([]);
@@ -19,14 +18,13 @@ function Home() {
     fetchArticles();
   }, []);
   return (
-    <div className="bg-gray-100 w-full h-screen">
-      <Navbar />
-      <div className="container p-3 bg-gray-100">
+    <main className="bg-gray-100 w-full flex justify-center ">
+      <div className="container p-3 bg-gray-100 w-full">
         <h3 className="">LATEST POSTS</h3>
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full align-center">
           {results.map((result) => (
             <div
-              className="m-2 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md lg:max-w-full"
+              className="m-2 p-6 bg-white rounded-lg border border-gray-200 shadow-md "
               key={result.post_id}
             >
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
@@ -43,7 +41,7 @@ function Home() {
           ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 export default Home;
