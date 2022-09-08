@@ -26,7 +26,11 @@ function Login() {
           try {
             const response = await axios.post(urls.LOGIN, values);
             LocalStorageService.setToken(response.data);
-            setAuth({ access: response.data.access, user_id: jwtDecode(response.data.access) });
+            setAuth({
+              access: response.data.access,
+              user_id: jwtDecode(response.data.access),
+              isLoggedIn: true
+            });
             toast.success('successfully logged in');
             navigate(from, { replace: true });
           } catch (error) {

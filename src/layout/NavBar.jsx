@@ -1,16 +1,17 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { NavLink } from 'react-router-dom';
 import { publicLinks } from '../constants/links';
 import logo from '../images/logo.svg';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
+import useAuth from '../hooks/useAuth';
 
 function Navbar() {
   // eslint-disable-next-line no-unused-vars
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { auth } = useAuth();
   return (
     <div>
       <nav className="bg-gray-800 shadow">
@@ -41,7 +42,7 @@ function Navbar() {
               >
                 Write
               </NavLink>
-              {isLoggedIn ? <LogoutButton /> : <LoginButton />}
+              {auth.isLoggedIn ? <LogoutButton /> : <LoginButton />}
             </div>
           </div>
         </div>
