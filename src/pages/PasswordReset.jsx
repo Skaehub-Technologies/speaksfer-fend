@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from '../api/axios';
 import { urls, publicLinks } from '../constants/links';
+import logo from '../images/logo.svg';
 
 function PasswordReset() {
   const navigate = useNavigate();
@@ -28,7 +29,8 @@ function PasswordReset() {
       >
         {({ errors, touched }) => (
           <Form className="bg-dark rounded p-2 shadow px-4 m-auto">
-            <h1 className="text-white text-xl text-center p-3">Login</h1>
+            <img src={logo} alt="speaksfer" className="m-auto h-6 sm:h-9" />
+            <h1 className="text-white text-xl text-center p-3">Forgot Password</h1>
             <div className="text-white flex flex-col mb-2 pb-2">
               <label htmlFor="email" className="text-sm">
                 Email

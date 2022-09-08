@@ -2,8 +2,8 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicLinks, privateLinks } from './links';
 import RequireAuth from '../components/RequireAuth';
-import Navbar from '../layout/NavBar';
 import PersistLogin from '../components/PersistLogin';
+import Navbar from '../layout/NavBar';
 
 const Home = React.lazy(() => import('../pages/Home'));
 const Login = React.lazy(() => import('../pages/Login'));
@@ -19,14 +19,16 @@ function BaseRouter() {
   return (
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path={publicLinks.LOGIN} element={<Login />} />
+          <Route path={publicLinks.REGISTRATION} element={<Registration />} />
+          <Route path={publicLinks.PASSWORDRESET} element={<PasswordReset />} />
+        </Routes>
         <Navbar />
         <Routes>
           <Route exact path={publicLinks.HOME} element={<Home />} />
-          <Route path={publicLinks.LOGIN} element={<Login />} />
-          <Route path={publicLinks.REGISTRATION} element={<Registration />} />
           <Route path={publicLinks.UNAUTHORIZED} element={<Unauthorized />} />
           <Route path={publicLinks.PROFILE} element={<Profile />} />
-          <Route path={publicLinks.PASSWORDRESET} element={<PasswordReset />} />
           <Route element={<PersistLogin />}>
             <Route element={<RequireAuth />}>
               <Route path={privateLinks.ADMIN} element={<Admin />} />
