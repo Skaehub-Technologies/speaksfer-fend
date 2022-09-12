@@ -8,7 +8,7 @@ const useLogout = () => {
   const logout = async () => {
     setAuth({ ...auth, isLoggedIn: false, access: null });
     try {
-      await axios('/logout', {
+      await axios('logout/', {
         withCredentials: true
       });
       LocalStorageService.clearToken();
