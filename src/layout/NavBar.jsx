@@ -37,6 +37,12 @@ function Navbar() {
                 Home
               </NavLink>
               <NavLink
+                to={publicLinks.PROFILE}
+                className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Profile
+              </NavLink>
+              <NavLink
                 to={publicLinks.HOME}
                 className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
               >

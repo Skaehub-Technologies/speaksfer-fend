@@ -19,11 +19,6 @@ function BaseRouter() {
   return (
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route path={publicLinks.LOGIN} element={<Login />} />
-          <Route path={publicLinks.REGISTRATION} element={<Registration />} />
-          <Route path={publicLinks.PASSWORDRESET} element={<PasswordReset />} />
-        </Routes>
         <Navbar />
         <Routes>
           <Route exact path={publicLinks.HOME} element={<Home />} />
@@ -36,6 +31,11 @@ function BaseRouter() {
               <Route path={privateLinks.EDITPROFILE} element={<EditProfile />} />
             </Route>
           </Route>
+        </Routes>
+        <Routes>
+          <Route path={publicLinks.LOGIN} element={<Login />} />
+          <Route path={publicLinks.REGISTRATION} element={<Registration />} />
+          <Route path={publicLinks.PASSWORDRESET} element={<PasswordReset />} />
         </Routes>
       </Suspense>
     </Router>
